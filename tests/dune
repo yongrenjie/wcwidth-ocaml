@@ -1,0 +1,5 @@
+(test
+  (name wcwidth_test)
+  (modules wcwidth_test)
+  (libraries alcotest wcwidth)
+  )

@@ -3,7 +3,11 @@ type interval =
   ; last : int
   }
 
-let mk first last = { first; last }
+let mk first last =
+  if first <= last
+  then { first; last }
+  else raise (Invalid_argument "mk: first must be less than or equal to last")
+;;
 
 (** As of Unicode 15.0.0. Taken from
     https://github.com/jquast/wcwidth/blob/master/wcwidth/table_zero.py *)
@@ -1014,7 +1018,7 @@ let wcwidth (c : Uchar.t) =
 ;;
 
 let to_reversed_utf8 (s : string) : Uchar.t list =
-  (* Number of bytes *)
+  (* String.length gives the number of bytes *)
   let len = String.length s in
   let rec aux n accum =
     if n >= len
