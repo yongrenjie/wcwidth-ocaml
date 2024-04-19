@@ -2,8 +2,7 @@
 val to_utf8 : string -> Uchar.t list
 
 (** Get the display width of a Unicode character. Returns -1 if the character is
-    unprintable. (Note that there isn't actually a good way to actually {i
-    input} a single Unicode character. For example, you can't use a character
+    unprintable. (Note that there isn't actually a good way to actually {i input} a single Unicode character. For example, you can't use a character
     literal. You can use {!to_utf8}, though.) *)
 val wcwidth : Uchar.t -> int
 

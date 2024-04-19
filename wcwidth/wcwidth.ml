@@ -1,5 +1,3 @@
-open Char_list
-
 type interval =
   { first : int
   ; last : int
@@ -41,7 +39,6 @@ let wcwidth (c : Uchar.t) =
   match Uchar.to_int c with
   | 0 -> 0
   | i when i < 32 || (i >= 0x7f && i < 0x80) -> -1
-  | i when List.mem i zero_width_others -> 0
   | i when binary_search zero_width_chars i -> 0
   | i when binary_search wide_chars i -> 2
   | _ -> 1
