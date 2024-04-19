@@ -2,6 +2,17 @@
 
 Implementation of the `wcwidth(3)` and `wcswidth(3)` functions for OCaml, which lets you calculate the number of columns a string occupies in a terminal.
 
+## Usage
+
+Add `wcwidth` to your project dependencies.
+
+```
+# Wcwidth.wcswidth "hello";;
+- : int = 5
+# Wcwidth.wcswidth "🦆";;
+- : int = 2
+```
+
 ## Update the character lists
 
 The Unicode version the library uses is documented in `wcwidth/char_list.ml`.
