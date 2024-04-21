@@ -16,6 +16,9 @@
   (name wcwidth)
   (synopsis "Get terminal display width of a string")
   (description "Get terminal display width of a string")
+  (depends
+    (ocaml (>= 4.14))
+    (alcotest :with-test))
   )
 
 ; See the complete stanza docs at https://dune.readthedocs.io/en/stable/dune-files.html#dune-project
