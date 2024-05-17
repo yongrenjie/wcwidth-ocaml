@@ -13,9 +13,9 @@ let mk (first, last) =
 
 (** Returns true if the number [i] is inside any of the intervals in the given
     [table]. The input [table] must be sorted. *)
-let binary_search (table : interval list) (i : int) : bool =
-  let min, max = 0, List.length table - 1 in
-  if i < (List.hd table).first || i > (List.nth table max).last
+let binary_search (table : interval array) (i : int) : bool =
+  let min, max = 0, Array.length table - 1 in
+  if i < table.(0).first || i > table.(max).last
   then false
   else (
     let rec inner_search min max =
@@ -23,17 +23,17 @@ let binary_search (table : interval list) (i : int) : bool =
       then false
       else (
         let mid = (min + max) / 2 in
-        if i > (List.nth table mid).last
+        if i > table.(mid).last
         then inner_search (mid + 1) max
-        else if i < (List.nth table mid).first
+        else if i < table.(mid).first
         then inner_search min (mid - 1)
         else true)
     in
     inner_search min max)
 ;;
 
-let zero_width_chars = List.map mk Char_list.zero_width_chars
-let wide_chars = List.map mk Char_list.wide_chars
+let zero_width_chars = Array.map mk Char_list.zero_width_chars
+let wide_chars = Array.map mk Char_list.wide_chars
 
 let wcwidth (c : Uchar.t) =
   match Uchar.to_int c with
